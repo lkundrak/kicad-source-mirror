@@ -725,6 +725,7 @@ if( UNIX AND NOT APPLE )
     set( UNIX_MIME_FILES ${UNIX_MIME_DIR}/mime )
     set( UNIX_ICON_FILES ${UNIX_MIME_DIR}/icons )
     set( UNIX_APPLICATIONS_FILES ${UNIX_MIME_DIR}/applications )
+    set( UNIX_APPDATA_FILES resources/linux/appdata )
 
     # Install Mimelnk directory
     install( DIRECTORY ${UNIX_MIMELNK_FILES}
@@ -746,6 +747,12 @@ if( UNIX AND NOT APPLE )
 
     # Install Applications directory (.desktop files)
     install( DIRECTORY ${UNIX_APPLICATIONS_FILES}
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share
+        COMPONENT resources
+        )
+
+    # Install AppStream directory (app store entry)
+    install( DIRECTORY ${UNIX_APPDATA_FILES}
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share
         COMPONENT resources
         )
